@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "825649563188",
+    "firebase_url": "https://android-apps-696ef.firebaseio.com",
+    "project_id": "android-apps-696ef",
+    "storage_bucket": "android-apps-696ef.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:825649563188:android:0f6498b5ba977dc4",
+        "android_client_info": {
+          "package_name": "com.calldoradosdk.integration"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "825649563188-3hgp49ur0nnk48bpg7u0rbd43r7ig5fc.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.calldoradosdk.integration",
+            "certificate_hash": "bae5617af7ed51e0ea30f2c685d8ced4c0c874dc"
+          }
+        },
+        {
+          "client_id": "825649563188-m00hulg93o31kmapt8cb7hs8hgikj0nt.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAl9JfcxbAvPpgbkqnDBqFhotvdZ9VUFgs"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "825649563188-m00hulg93o31kmapt8cb7hs8hgikj0nt.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

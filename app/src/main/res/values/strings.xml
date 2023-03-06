@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">Calldorado SDK Integration</string>
+    <string name="in_app_name">Calldorado SDK Integration</string>
+    <string name="welcome">Welcome!</string>
+    <string name="intro_text">This app comes with an aftercall feature, giving "\n"
+                            you the ability to access your app after each "\n"
+                            phone call. To use the aftercall feature the following "\n"
+                            permissions are needed.</string>
+
+    <string name="phone_permission">Phone Status: Helps identify incoming and outgoing "\n"
+                                    call states.</string>
+
+    <string name="overlay_permission"> Overlay: Used in order for the aftercall feature to "\n"
+                                       function properly.</string>
+
+
+    <string name="terms"> By continuing, you accept our</string>
+    <string name="pp"> Privacy Policy</string>
+    <!--<string name="terms_of_use"><a href="https://legal.calldorado.com/usage-and-privacy-terms/">terms of use</a></string>
+    <string name="privacy_policy"><a href="https://legal.calldorado.com/privacy-policy/">privacy policy</a></string>-->
+
+    <string name="accept">Continue</string>
+    <string name="click_me">Click me</string>
+    <string name="expandedcustomview">My Expanded Custom View</string>
+    <string name="lastcall">Last Call info</string>
+    <string name="test_CDO">Test the Integration by making a phone call to see the WIC and AfterCall Screen</string>
+</resources>
