@@ -13,7 +13,8 @@ import com.calldorado.sdk.Calldorado.showSettings
 
 class SecondActivity : AppCompatActivity() {
 
-    @OptIn(ExperimentalAnimationApi::class, ExperimentalMaterialApi::class,
+    @OptIn(
+        ExperimentalAnimationApi::class, ExperimentalMaterialApi::class,
         ExperimentalComposeUiApi::class
     )
     override fun onCreate(savedInstanceState: Bundle?) {

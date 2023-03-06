@@ -16,7 +16,8 @@ class MyCustomView(context: Context) : CalldoradoCustomView(
 ) {
 
     override fun getRootView(): View {
-        val constraintLayout = View.inflate(context, R.layout.mycustomview, null) as ConstraintLayout
+        val constraintLayout =
+            View.inflate(context, R.layout.mycustomview, null) as ConstraintLayout
         val clickMe = constraintLayout.findViewById<Button>(R.id.click)
         clickMe.setOnClickListener(View.OnClickListener {
             val intent = Intent(context, SecondActivity::class.java)

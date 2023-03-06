@@ -20,7 +20,8 @@ class MyApplication : Application() {
     var localBroadcastManager: LocalBroadcastManager? = null
     var intentFilter: IntentFilter? = null
 
-    @OptIn(ExperimentalAnimationApi::class, ExperimentalMaterialApi::class,
+    @OptIn(
+        ExperimentalAnimationApi::class, ExperimentalMaterialApi::class,
         ExperimentalComposeUiApi::class
     )
     @SuppressLint("UnsafeOptInUsageError")

@@ -8,7 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 
 class WebViewActivity : AppCompatActivity() {
 
-    lateinit var mywebview : WebView
+    lateinit var mywebview: WebView
 
     @SuppressLint("MissingInflatedId", "SetJavaScriptEnabled")
     override fun onCreate(savedInstanceState: Bundle?) {

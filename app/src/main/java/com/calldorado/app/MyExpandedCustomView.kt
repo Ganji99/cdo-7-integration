@@ -12,12 +12,13 @@ import com.calldoradosdk.integration.R
 import com.calldoradosdk.integration.SecondActivity
 
 //This class is to show the expanded native field on the AfterCall without any height restrictions
-class MyExpandedCustomView( context: Context) : CalldoradoCustomView(
+class MyExpandedCustomView(context: Context) : CalldoradoCustomView(
     context
 ) {
 
     override fun getRootView(): View {
-        val constraintLayout = View.inflate(context, R.layout.myexpandedcustomview, null) as ConstraintLayout
+        val constraintLayout =
+            View.inflate(context, R.layout.myexpandedcustomview, null) as ConstraintLayout
         val clickMeExpanded = constraintLayout.findViewById<Button>(R.id.expandedclick)
         val myExpandedCustomView = constraintLayout.findViewById<Button>(R.id.expandedtextview)
         clickMeExpanded.setOnClickListener(View.OnClickListener {
