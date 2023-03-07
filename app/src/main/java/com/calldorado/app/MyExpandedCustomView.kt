@@ -19,13 +19,16 @@ class MyExpandedCustomView(context: Context) : CalldoradoCustomView(
     override fun getRootView(): View {
         val constraintLayout =
             View.inflate(context, R.layout.myexpandedcustomview, null) as ConstraintLayout
-        val clickMeExpanded = constraintLayout.findViewById<Button>(R.id.expandedclick)
-        val myExpandedCustomView = constraintLayout.findViewById<Button>(R.id.expandedtextview)
+
+        val clickMeExpanded = constraintLayout.findViewById<TextView>(R.id.expandedclick)
+        val myExpandedCustomView = constraintLayout.findViewById<TextView>(R.id.expandedtextview)
+
         clickMeExpanded.setOnClickListener(View.OnClickListener {
             val intent = Intent(context, SecondActivity::class.java)
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
             context.startActivity(intent)
         })
+
         myExpandedCustomView.setOnClickListener(View.OnClickListener {
             Toast.makeText(
                 context,
@@ -33,6 +36,7 @@ class MyExpandedCustomView(context: Context) : CalldoradoCustomView(
                 Toast.LENGTH_SHORT
             ).show()
         })
+
         return constraintLayout
     }
 }

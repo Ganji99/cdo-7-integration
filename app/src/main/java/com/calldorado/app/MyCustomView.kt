@@ -2,6 +2,7 @@ package com.calldorado.app
 
 import android.content.Context
 import android.content.Intent
+import android.view.LayoutInflater
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
@@ -16,9 +17,12 @@ class MyCustomView(context: Context) : CalldoradoCustomView(
 ) {
 
     override fun getRootView(): View {
-        val constraintLayout =
-            View.inflate(context, R.layout.mycustomview, null) as ConstraintLayout
-        val clickMe = constraintLayout.findViewById<Button>(R.id.click)
+       /* val constraintLayout =
+            View.inflate(context, R.layout.mycustomview, null) as ConstraintLayout*/
+        val constraintLayout = LayoutInflater.from(context).inflate(R.layout.mycustomview, null)
+
+        val clickMe = constraintLayout.findViewById<TextView>(R.id.click)
+
         clickMe.setOnClickListener(View.OnClickListener {
             val intent = Intent(context, SecondActivity::class.java)
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
