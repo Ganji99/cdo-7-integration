@@ -11,19 +11,18 @@ import android.provider.Settings
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
+import androidx.annotation.Nullable
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import com.calldorado.sdk.Calldorado.acceptConditions
 
+
 class MainActivity : AppCompatActivity() {
-    var termsPolicy: TextView? = null
-    var buttonContinue: Button? = null
     private val url = "https://legal.appvestor.com/privacy-policy/"
     var overlayPermissionManager: OverlayPermissionManager? = null
 
     @SuppressLint("MissingInflatedId")
-    @RequiresApi(api = Build.VERSION_CODES.M)
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
@@ -45,7 +44,9 @@ class MainActivity : AppCompatActivity() {
         })
         buttonContinue.setOnClickListener(View.OnClickListener {
             acceptConditions(this@MainActivity, true)
-            requestCdoPermissions()
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                requestCdoPermissions()
+            }
         })
     }
 
@@ -54,7 +55,9 @@ class MainActivity : AppCompatActivity() {
         val permissionList = ArrayList<String>()
         permissionList.add(Manifest.permission.READ_PHONE_STATE)
         permissionList.add(Manifest.permission.CALL_PHONE)
-        permissionList.add(Manifest.permission.ANSWER_PHONE_CALLS)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            permissionList.add(Manifest.permission.ANSWER_PHONE_CALLS)
+        }
         ActivityCompat.requestPermissions(
             this,
             permissionList.toTypedArray(),
@@ -76,10 +79,39 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    private fun checkOverlayPermission(): Boolean {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            if (!Settings.canDrawOverlays(this)) {
+                // Permission not granted, ask for permission
+                overlayPermissionManager = OverlayPermissionManager(this)
+                if (!overlayPermissionManager!!.isGranted) {
+                    overlayPermissionManager!!.requestOverlay()
+                }
+                startActivityForResult(intent, REQUEST_OVERLAY_PERMISSION)
+                return false
+            }
+        }
+        // Permission already granted
+        return true
+    }
+
     private fun secondActivity() {
         val intent = Intent(this@MainActivity, SecondActivity::class.java)
         intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
         startActivity(intent)
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, @Nullable data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == REQUEST_OVERLAY_PERMISSION) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                if (Settings.canDrawOverlays(this)) {
+                    // Permission granted, start the next activity
+                    startActivity(Intent(this, SecondActivity::class.java))
+                    finish()
+                }
+            }
+        }
     }
 
     @RequiresApi(api = Build.VERSION_CODES.M)
@@ -90,7 +122,8 @@ class MainActivity : AppCompatActivity() {
     ) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         if (requestCode == PHONE_STATE_PERMISSION_CODE) {
-            checkDrawOverlayPermission(applicationContext)
+           // checkDrawOverlayPermission(applicationContext)
+            checkOverlayPermission()
             overlayPermissionManager = OverlayPermissionManager(this)
             if (overlayPermissionManager!!.isGranted) {
                 secondActivity()
@@ -102,5 +135,7 @@ class MainActivity : AppCompatActivity() {
 
     companion object {
         private const val PHONE_STATE_PERMISSION_CODE = 100
+        private const val REQUEST_OVERLAY_PERMISSION = 101
+
     }
 }

@@ -14,6 +14,7 @@ import androidx.work.WorkManager
 import com.calldorado.sdk.Calldorado
 import com.calldorado.sdk.Calldorado.startCalldorado
 import com.calldorado.sdk.util.Constants
+import com.google.firebase.FirebaseApp
 
 class MyApplication : Application() {
     var setDeleteUserDataReceiver: BroadcastReceiver = SetDeleteUserDataReceiver()
@@ -27,6 +28,7 @@ class MyApplication : Application() {
     @SuppressLint("UnsafeOptInUsageError")
     override fun onCreate() {
         super.onCreate()
+        FirebaseApp.initializeApp(this)
         val myConfig = Configuration.Builder()
             .setMinimumLoggingLevel(Log.INFO)
             .build()

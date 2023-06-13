@@ -16,17 +16,18 @@ class WebViewActivity : AppCompatActivity() {
         setContentView(R.layout.web_view)
         mywebview = findViewById<WebView>(R.id.webView1)
 
-        mywebview.getSettings().javaScriptEnabled = true
-        mywebview.setWebViewClient(WebViewClient())
+        mywebview.settings.javaScriptEnabled = true
+        mywebview.webViewClient = WebViewClient()
         val url = intent.getStringExtra("url")
         mywebview.loadUrl(url!!)
     }
 
+    @Deprecated("Deprecated in Java")
     override fun onBackPressed() {
         if (mywebview.canGoBack()) {
             mywebview.goBack()
         } else {
-            super.onBackPressed()
+            super.getOnBackPressedDispatcher()
             finish()
         }
     }
